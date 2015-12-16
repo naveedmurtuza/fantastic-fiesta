@@ -146,7 +146,7 @@ Still with me? :) OK lets start configuring.
 
     If you are ok with directory structure, then issue the below command in ssh console.
     
-{% highlight %}
+{% highlight shell %}
 mkdir -p /mnt/data/{users/{user1,user2},public/{torrents,downloads,video,audio,photos},transmission/{config,incomplete}}
 {% endhighlight %}
     
