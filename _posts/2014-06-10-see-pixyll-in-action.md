@@ -157,7 +157,7 @@ mkdir -p /mnt/data/{users/{user1,user2},public/{torrents,downloads,video,audio,p
     Lets control access to those directories. Login to the server using SSH. First lets give everyone in the `home` group access to the `public` directory.
 
 
-```shell
+```console
 # su -root
 # cd /mnt/data
 # chgrp -R home public
