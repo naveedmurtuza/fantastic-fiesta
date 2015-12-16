@@ -57,7 +57,7 @@ On your management computer, fire up your browser and navigate to http://ipaddre
 
 ##### Configuring
 
-Before we start configuring, we need to get a hang of some of the shell commands and file permissions. Though you can find extensive information on the internet on this, but i have found [LinuxCommands](http://www.linuxcommand.org) to be an excellent resource.
+Before we start configuring, we need to get a hang of some of the shell commands and file permissions. Though you can find extensive information on the internet on this, but i have found [linuxcommand.org](http://www.linuxcommand.org) to be an excellent resource.
 
 `cd` `pwd` `ls` `mkdir` `rm` `chown` `chmod` `chgrp`
 
@@ -67,22 +67,21 @@ Still with me? :) OK lets start configuring.
 
 * __Securing your logon__
 
-    The first step towards security is changing your default logon password by navigating to `System > Password`. While you are at `System` page enable `SSL` by changing the protocol from `HTTP` to `HTTPS`. Though not required in a home network, Neverthless it is better to enable as it costs nothing :smile: . If you dont want to see that ugly certifate not trusted warning, then install the certificate to trusted chain.
+    The first step towards security is changing your default logon password by navigating to `System > General` and switch over to the `Password` tab. Provide your current password and new password. Switch back to `General` tab and to enable `SSL`. Provide hostname and domain and hit `Save`. Now change the protocol from `HTTP` to `HTTPS`. If you dont want to see that ugly certifate not trusted warning, then we need to install the certificate to trusted chain. Copy the certificate data to a text file and save it with .cer extension. Now open the certificate file and click `Install Certicate`. In the wizard that follows, press Next, then select `Place all certificates in the following store` and hit browse, then select `TRusted Root Certification Authorities` and finish.
 [pics]
 
 * __Static IP__
 
     The server should always be assigned a static ip address. Imagine jumping out of your couch to physically go to the Nas box just to check the ip address alloted by the DHCP after a system reboot, to enable you to access the WebGUI again. Tedious! To assign a static IP address, you need to logon to the router's management console. This step differs depending on the router model. Basically, we will be instructing our router to issue the same ip address to our NAS box, on every DHCP request.
 
-    In Belkin you would do this by ...
+    In Belkin you would do this by changing the Lease Time to forever in LAN Settings.
 
-    Also a nice, but optional trick is to modify your hosts file to add a host name to point to the nas4free ipaddress. Then instead of typing in the ipaddress to access the webGUI, u can type a cool hostname like    `https://homenas`
+    Now modify your hosts file to add a host name to point to the nas4free ipaddress. Then instead of typing in the ipaddress to access the webGUI, u can type a cool hostname like    `https://homenas.local`
     To do so, on a Windows machine, open up your explorer `Win + E` and navigate to `<WINDIR>\System32\drivers\etc` and open the `hosts` file in a notepad and append a line
     ```
-    192.168.2.100     homenas
+    192.168.2.100     homenas.local
     ```
-    to the end of that file.
-    
+    to the end of that file. Here homenas.local is hostname.domain provided on the `System > General` tab.
     
     ```
     You will need administrator access to save files to that location
@@ -95,7 +94,7 @@ Still with me? :) OK lets start configuring.
     
     [pic]
     
-    Now switch over to `Users` tab and create as many users as you require. For every user you create, select `home` as their primary group. Preferably you should create one of your user with `root` permissions by adding him to `wheel`, `transmission`, `sshd` groups. Be sure to select shell as `bash` for any user you want to give SSH access Also create a user by the name `torrents` and add him to `home` and `transmission` groups to manage the torrents.
+    Now switch over to `Users` tab and create as many users as you require. For every user you create, select `home` as their primary group. Preferably you should create one of your user with `root` permissions by adding him to `wheel`, `transmission` groups. Be sure to select shell as `bash` for any user you want to give SSH access. Also create a user by the name `torrents` and add him to `home` and `transmission` groups to manage the torrents.
     
     [pic]
     
@@ -106,7 +105,7 @@ Still with me? :) OK lets start configuring.
     
     Enable SSH access by going to `Services` dropdown and click `SSH`. After the page loads click on Enable checkbox located at the top right corner, leave the defaults as is, and click `Save & Restart`
 
-    Open up PuTTy, enter your server IP address and click OK. Alternative you can save the session, to save you from typing the IP address everytime you connect. On the putty terminal type in your username an password and voila! you are in your NAS box. This user should be in `sshd` group and its shell selected to `bash`.
+    Open up PuTTy, enter your server IP address and click OK. Alternative you can save the session, to save you from typing the IP address everytime you connect. On the putty terminal type in your username an password and voila! you are in your NAS box. 
     
     If you are ConEmu user, or just downloaded it and you are liking it, then configure ConEmu to use PuTTY[^1]. Move the PuTTY executable to suitable location. Generally, I have a tools directory on C:\ drive where I dump all the tools I regularly use. Infact my ConEmu is there as well. Then add this to your `PATH`.
     
