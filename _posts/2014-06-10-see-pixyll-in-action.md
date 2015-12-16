@@ -7,7 +7,7 @@ categories: jekyll pixyll
 ---
 ##### Introduction
 
-This blog post guides you to turn your old dusty PC/Laptop to NAS server. I am using using my old (infact my first, bought _wayyybaack_ in 2008!) laptop.
+This blog post guides you to turn your old dusty PC/Laptop to NAS server. I am using using my old laptop (infact my first, bought _wayyybaack_ in 2008!).
 Dell Inspiron 1501!   Its a AMD turion X2 with 2 GB of RAM and 100 GB HDD.
   
 I have selected [Nas4Free](http://www.nas4free.org) as the OS, primarily for its low hardware requirements. [FreeNAS](#), the other excellent alternative has pretty high requirements. If your old laptop turns on and boots, you are good to go. If it doesnt support booting from USB drive then you have to burn a copy of the OS to a CD and install it on the internal HDD. Fortunately my inspiron supports booting from USB drive, so I will be installing NAS4Free on a USB stick.
@@ -65,11 +65,13 @@ Still with me? :) OK lets start configuring.
 
 > After making any change to system using the WebGUI, you have to click "Apply Changes" to commit the change. So remember to hit "Apply Changes" whereever applicable.
 
-* Securing your logon
-The first step towards security is changing your default logon password by navigating to `System > Password`. While you are at `System` page enable `SSL` by changing the protocol from `HTTP` to `HTTPS`. Though not required in a home network, Neverthless it is better to enable as it costs nothing :smile: . If you dont want to see that ugly certifate not trusted warning, then install the certificate to trusted chain.
+* __Securing your logon__
+
+    The first step towards security is changing your default logon password by navigating to `System > Password`. While you are at `System` page enable `SSL` by changing the protocol from `HTTP` to `HTTPS`. Though not required in a home network, Neverthless it is better to enable as it costs nothing :smile: . If you dont want to see that ugly certifate not trusted warning, then install the certificate to trusted chain.
 [pics]
 
-* Static IP
+* __Static IP__
+
     The server should always be assigned a static ip address. Imagine jumping out of your couch to physically go to the Nas box just to check the ip address alloted by the DHCP after a system reboot, to enable you to access the WebGUI again. Tedious! To assign a static IP address, you need to logon to the router's management console. This step differs depending on the router model. Basically, we will be instructing our router to issue the same ip address to our NAS box, on every DHCP request.
 
     In Belkin you would do this by ...
@@ -79,15 +81,27 @@ The first step towards security is changing your default logon password by navig
     ```
     192.168.2.100     homenas
     ```
+    to the end of that file.
     
     
     ```
     You will need administrator access to save files to that location
     ```
     
-* Users & Groups
+* __Users & Groups__
+
+    Users and Groups are used for access control — that is, to control access to the services provided by the NAS box. A `user` is _anyone_ who uses a computer (NAS box in our case).So, basically we create a user for every one who uses the network or wants to access the NAS. Multiple users can be "clubbed" together to form `group` to ease the management of multiple users. Instead of assigning permissions to multiple users individually, we can assign those permissions on a group containig those users.
+    Lets start by creating a group. Navigate to `Access > Users and Groups` and switch to the `Groups` tab. Add a new group by clicking on the plus symbol.Provide group name and description in the respective fields. I'll name my group `home`.
     
-* Import HDDs
+    [pic]
+    
+    Now switch over to `Users` tab and create as many users as you require. For every user you create, select `home` as their primary group. Preferably you should create one of your user with `root` permissions by adding him to `wheel`, `transmission`, `sshd` groups. Also create a user by the name `torrents` and add him to `home` and `transmission` groups.
+    
+    [pic]
+    
+* __Import HDDs__
+    
+
 * File Structure
 * 
 There is a significant amount of subtle, yet precisely calibrated, styling to ensure
