@@ -95,15 +95,57 @@ Still with me? :) OK lets start configuring.
     
     [pic]
     
-    Now switch over to `Users` tab and create as many users as you require. For every user you create, select `home` as their primary group. Preferably you should create one of your user with `root` permissions by adding him to `wheel`, `transmission`, `sshd` groups. Also create a user by the name `torrents` and add him to `home` and `transmission` groups.
+    Now switch over to `Users` tab and create as many users as you require. For every user you create, select `home` as their primary group. Preferably you should create one of your user with `root` permissions by adding him to `wheel`, `transmission`, `sshd` groups. Be sure to select shell as `bash` for any user you want to give SSH access Also create a user by the name `torrents` and add him to `home` and `transmission` groups to manage the torrents.
     
     [pic]
     
 * __Import HDDs__
+    <todo>
+
+* __SSH__
+    
+    Enable SSH access by going to `Services` dropdown and click `SSH`. After the page loads click on Enable checkbox located at the top right corner, leave the defaults as is, and click `Save & Restart`
+
+    Open up PuTTy, enter your server IP address and click OK. Alternative you can save the session, to save you from typing the IP address everytime you connect. On the putty terminal type in your username an password and voila! you are in your NAS box. This user should be in `sshd` group and its shell selected to `bash`.
+    
+    If you are ConEmu user, or just downloaded it and you are liking it, then configure ConEmu to use PuTTY[^1]. Move the PuTTY executable to suitable location. Generally, I have a tools directory on C:\ drive where I dump all the tools I regularly use. Infact my ConEmu is there as well. Then add this to your `PATH`.
+    
+    Crank open ConEmu and open the Settings dialog (Win+Alt+P). On the menu look under `Startup > Tasks` and click the '+' button. You'll see
+    
+    [pic]
+    
+    Enter ```cmd putty.exe -new_console -load "yoursavedsession" ```
+
+    
+* __File Structure__
+    Since the NAS boxh will be used by multiple users accross the network for their file storage needs, we need to have our files properly organized, so as not to clutter the disk space. The structure I am using is as follows. Ofcourse you can change the structure if you are not comfortable with it.
+```
+    data
+      |---users
+            |---user1
+            |---user2
+            +---usern
+      |---public
+            |---torrents
+            |---downloads
+            |---video
+            |---audio
+            +---photos
+      +---transmission
+              |---config
+              +---incomplete
+```
+    
+    The public directory will be accessible by everyone in the `home` group. The directories in the `users`directory can be accessed by their respective user only. Like user1 will be allowed access to user1 directory only.
+    
+    If you are ok with directory structure, then issue the below command in ssh console.
+    
+    ``` bash
+    mkdir -p /mnt/data/{users/{user1,user2},public/{torrents,downloads,video,audio,photos},transmission/{config,incomplete}}
+    ```
+* __Permissions__
     
 
-* File Structure
-* 
 There is a significant amount of subtle, yet precisely calibrated, styling to ensure
 that your content is emphasized while still looking aesthetically pleasing.
 
@@ -230,4 +272,4 @@ Happy writing.
 
 ---
 
-[^1]: Important information that may distract from the main text can go in footnotes.
+[^1]: http://thecrumb.com/2013/03/04/configuring-conemu-and-putty/
