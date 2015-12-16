@@ -135,16 +135,43 @@ Still with me? :) OK lets start configuring.
               |---config
               +---incomplete
 </pre>
-    
+
+
     The public directory will be accessible by everyone in the `home` group. The directories in the `users`directory can be accessed by their respective user only. Like user1 will be allowed access to user1 directory only.
-    
+
+
     If you are ok with directory structure, then issue the below command in ssh console.
     
-    {% highlight bash %}
-    mkdir -p /mnt/data/{users/{user1,user2},public/{torrents,downloads,video,audio,photos},transmission/{config,incomplete}}
+    {% highlight shell %}
+      mkdir -p /mnt/data/{users/{user1,user2},public/{torrents,downloads,video,audio,photos},transmission/{config,incomplete}}
     {% endhighlight %}
-* __Permissions__
     
+    
+* __Permissions__
+    Lets control access to those directories. Login to the server using SSH. First lets give everyone in the `home` group access to the `public` directory.
+
+{% highlight shell %}
+
+# su -root
+
+# cd /mnt/data
+# chgrp -R home public
+
+{% endhighlight %}
+
+    Now change the ownership of the user directories to their respective users.
+    
+    {% highlight shell %}
+    
+      # cd /mnt/data/users
+      # chown -R user1:home user1
+      
+    {% endhighlight %}
+    
+
+* __CIFS/SMB service__
+
+    Do this for all the users created.
 
 There is a significant amount of subtle, yet precisely calibrated, styling to ensure
 that your content is emphasized while still looking aesthetically pleasing.
