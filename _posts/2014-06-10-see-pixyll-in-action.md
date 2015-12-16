@@ -53,7 +53,7 @@ After the installation shutdown the system by choosing option #8. Once your syst
 
 [pic]
 
-On your management computer, fire up your browser and navigate to http://ipaddress. Youll see the WebGUI of NAS4Free box that we will be using to configure the NAS4Free box. Logon (default credentials are 'admin' and 'nas4free')a and make yourself comfortable with GUI.
+On your management computer, fire up your browser and navigate to http://ipaddress. Youll see the WebGUI of NAS4Free box that we will be using to configure the NAS4Free box. Logon (default credentials are `admin` and `nas4free`)a and make yourself comfortable with GUI.
 
 ##### Configuring
 
@@ -66,7 +66,30 @@ Still with me? :) OK lets start configuring.
 > After making any change to system using the WebGUI, you have to click "Apply Changes" to commit the change. So remember to hit "Apply Changes" whereever applicable.
 
 * Securing your logon
+The first step towards security is changing your default logon password by navigating to `System > Password`. While you are at `System` page enable `SSL` by changing the protocol from `HTTP` to `HTTPS`. Though not required in a home network, Neverthless it is better to enable as it costs nothing :smile: . If you dont want to see that ugly certifate not trusted warning, then install the certificate to trusted chain.
+[pics]
 
+* Static IP
+    The server should always be assigned a static ip address. Imagine jumping out of your couch to physically go to the Nas box just to check the ip address alloted by the DHCP after a system reboot, to enable you to access the WebGUI again. Tedious! To assign a static IP address, you need to logon to the router's management console. This step differs depending on the router model. Basically, we will be instructing our router to issue the same ip address to our NAS box, on every DHCP request.
+
+    In Belkin you would do this by ...
+
+    Also a nice, but optional trick is to modify your hosts file to add a host name to point to the nas4free ipaddress. Then instead of typing in the ipaddress to access the webGUI, u can type a cool hostname like    `https://homenas`
+    To do so, on a Windows machine, open up your explorer `Win + E` and navigate to `<WINDIR>\System32\drivers\etc` and open the `hosts` file in a notepad and append a line
+    ```
+    192.168.2.100     homenas
+    ```
+    
+    
+    ```
+    You will need administrator access to save files to that location
+    ```
+    
+* Users & Groups
+    
+* Import HDDs
+* File Structure
+* 
 There is a significant amount of subtle, yet precisely calibrated, styling to ensure
 that your content is emphasized while still looking aesthetically pleasing.
 
