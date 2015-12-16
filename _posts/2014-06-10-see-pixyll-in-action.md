@@ -158,25 +158,21 @@ works if <del>for some reason you need to update your post</del>. For consistenc
 
 Here's an example of some ruby code with line anchors.
 
-{% highlight ruby lineanchors %}
-# The most awesome of classes
-class Awesome < ActiveRecord::Base
-  include EvenMoreAwesome
-
-  validates_presence_of :something
-  validates :email, email_format: true
-
-  def initialize(email, name = nil)
-    self.email = email
-    self.name = name
-    self.favorite_number = 12
-    puts 'created awesomeness'
-  end
-
-  def email_format
-    email =~ /\S+@\S+\.\S+/
-  end
-end
+{% highlight %}
+  data
+      |---users
+            |---user1
+            |---user2
+            +---usern
+      |---public
+            |---torrents
+            |---downloads
+            |---video
+            |---audio
+            +---photos
+      +---transmission
+              |---config
+              +---incomplete
 {% endhighlight %}
 
 Here's some CSS:
