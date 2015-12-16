@@ -137,17 +137,18 @@ Still with me? :) OK lets start configuring.
               |---config
               +---incomplete
 </pre>
-  
-    
-    
+
+
+
+
     The public directory will be accessible by everyone in the `home` group. The directories in the `users`directory can be accessed by their respective user only. Like user1 will be allowed access to user1 directory only.
 
 
     If you are ok with directory structure, then issue the below command in ssh console.
     
-```shell
+{% highlight %}
 mkdir -p /mnt/data/{users/{user1,user2},public/{torrents,downloads,video,audio,photos},transmission/{config,incomplete}}
-```
+{% endhighlight %}
     
     
 * __Permissions__
