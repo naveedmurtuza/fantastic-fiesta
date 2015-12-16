@@ -119,7 +119,7 @@ Still with me? :) OK lets start configuring.
     
 * __File Structure__
     Since the NAS boxh will be used by multiple users accross the network for their file storage needs, we need to have our files properly organized, so as not to clutter the disk space. The structure I am using is as follows. Ofcourse you can change the structure if you are not comfortable with it.
-{% highlight %}
+<pre>
     data
       |---users
             |---user1
@@ -134,7 +134,7 @@ Still with me? :) OK lets start configuring.
       +---transmission
               |---config
               +---incomplete
-{% endhighlight %}
+</pre>
     
     The public directory will be accessible by everyone in the `home` group. The directories in the `users`directory can be accessed by their respective user only. Like user1 will be allowed access to user1 directory only.
     
@@ -158,21 +158,25 @@ works if <del>for some reason you need to update your post</del>. For consistenc
 
 Here's an example of some ruby code with line anchors.
 
-{% highlight %}
-  data
-      |---users
-            |---user1
-            |---user2
-            +---usern
-      |---public
-            |---torrents
-            |---downloads
-            |---video
-            |---audio
-            +---photos
-      +---transmission
-              |---config
-              +---incomplete
+{% highlight ruby%}
+  # The most awesome of classes
+class Awesome < ActiveRecord::Base
+  include EvenMoreAwesome
+
+  validates_presence_of :something
+  validates :email, email_format: true
+
+  def initialize(email, name = nil)
+    self.email = email
+    self.name = name
+    self.favorite_number = 12
+    puts 'created awesomeness'
+  end
+
+  def email_format
+    email =~ /\S+@\S+\.\S+/
+  end
+end
 {% endhighlight %}
 
 Here's some CSS:
