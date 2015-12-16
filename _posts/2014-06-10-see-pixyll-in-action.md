@@ -59,7 +59,7 @@ On your management computer, fire up your browser and navigate to http://ipaddre
 
 Before we start configuring, we need to get a hang of some of the shell commands and file permissions. Though you can find extensive information on the internet on this, but i have found [LinuxCommands](http://www.linuxcommand.org) to be an excellent resource.
 
-`cd` `pwd` `ls` `mkdir` `rm` `chown` `chmod` `chgrp`
+<span class="bg-dark-gray white">[cd](httt://www.linuxcommand.org)</span> `cd` `pwd` `ls` `mkdir` `rm` `chown` `chmod` `chgrp`
 
 Still with me? :) OK lets start configuring.
 
