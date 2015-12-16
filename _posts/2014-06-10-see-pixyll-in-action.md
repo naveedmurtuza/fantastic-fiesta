@@ -7,7 +7,7 @@ categories: jekyll pixyll
 ---
 ##### Introduction
 
-This blog post guides you to turn your old dusty PC/Laptop to NAS server. I have used my old (infact my first) laptop.
+This blog post guides you to turn your old dusty PC/Laptop to NAS server. I am using using my old (infact my first, bought _wayyybaack_ in 2008!) laptop.
 Dell Inspiron 1501!   Its a AMD turion X2 with 2 GB of RAM and 100 GB HDD.
   
 I have selected [Nas4Free](http://www.nas4free.org) as the OS, primarily for its low hardware requirements. [FreeNAS](#), the other excellent alternative has pretty high requirements. If your old laptop turns on and boots, you are good to go. If it doesnt support booting from USB drive then you have to burn a copy of the OS to a CD and install it on the internal HDD. Fortunately my inspiron supports booting from USB drive, so I will be installing NAS4Free on a USB stick.
@@ -29,8 +29,10 @@ At the end of the tutorial,  you will have a powerful NAS box with a file shares
     * [ConEmu](https://conemu.github.io/) is completely optional. It is a Windows console window enhancement, which presents multiple consoles and simple GUI applications as one customizable tabbed GUI window with various features. 
 
 ##### Installation
+
 ###### Creating installation media:
 Insert your "source" USB stick and note down the drive letter (Win + E to fire up your explorer). Open the disk imager utility, browse to the downloaded NAS4Free image file, select the appropriate drive letter from the dropbox and click write. Once it finishes you will have your installation media ready.
+
 ###### Boot
 Restart your computer and select USB from the boot menu. If your BIOS does'nt have boot menu, set the first boot device  to your USB Stick from the BIOS. This step can be done from any PC you are comfortable with. My inspiron had some dispay issues and a few broken keys on the keyboard. So I did all the installation on the other 'management' PC and connected the final USB stick to boot from.
 
