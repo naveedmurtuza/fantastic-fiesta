@@ -137,6 +137,7 @@ Still with me? :) OK lets start configuring.
 </pre>
 
 
+
     The public directory will be accessible by everyone in the `home` group. The directories in the `users`directory can be accessed by their respective user only. Like user1 will be allowed access to user1 directory only.
 
 
@@ -150,8 +151,8 @@ Still with me? :) OK lets start configuring.
 * __Permissions__
     Lets control access to those directories. Login to the server using SSH. First lets give everyone in the `home` group access to the `public` directory.
 
-```
 
+```bash
 # su -root
 
 # cd /mnt/data
